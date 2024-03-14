@@ -1,0 +1,32 @@
+# Build Container Image Stage
+FROM python:3.10.6 as build
+
+WORKDIR /app
+
+# hadolint ignore=DL3013
+COPY Pipfile Pipfile.lock ./
+ENV PIPENV_VENV_IN_PROJECT=1
+RUN python -m pip install --no-cache-dir --upgrade pip && \
+    python -m pip install --no-cache-dir pipenv && \
+    python -m pipenv install
+
+# Runtime Container Image Stage
+FROM python:3.10.6-slim
+
+RUN apt-get update && \
+    apt-get install -y libpq-dev && \
+    apt-get install -y nginx && \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY --from=build /app/.venv ./.venv
+COPY ./ ./
+
+ENV PATH="/app/.venv/bin:$PATH"
+
+EXPOSE 8000
+RUN chmod 777 /app/server.sh
+
+# run command 설정
+CMD ["sh", "-c", "/app/server.sh"]
