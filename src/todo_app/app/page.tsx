@@ -1,7 +1,7 @@
 import { CircleIcon, MoonIcon } from "@/components/ui/icons";
-import ToDoHeader from "@/components/ui/todo/todo_header";
-import ToDoInput from "@/components/ui/todo/todo_input";
-import ToDoList from "@/components/ui/todo/todo_list";
+import ToDoHeader from "@/components/todo/todo_header";
+import ToDoInput from "@/components/todo/todo_input";
+import ToDoList from "@/components/todo/todo_list";
 import { TodoProvider } from "@/lib/providers/todo";
 
 export default function Home() {
