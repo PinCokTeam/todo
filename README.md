@@ -9,6 +9,5 @@ frontend is NextJS, backend is django + DRF
 Use docker compose
 
 ```shell
-docker network create todo
 docker compose up -d
 ```
