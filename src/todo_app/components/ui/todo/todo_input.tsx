@@ -28,7 +28,7 @@ export default function ToDoInput() {
     <div className="flex items-center rounded-md border-2 border-gray-200 p-2">
       <CircleIcon className="h-5 w-5 text-gray-400" />
       <Input
-        className="ml-2 flex-1 border-none focus:ring-0 focus:outline-none"
+        className="text-black ml-2 flex-1 border-none focus:ring-0 focus:outline-none dark:text-white dark:bg-gray-800 dark:placeholder-gray-400"
         placeholder="Create a new todo..."
         type="text"
         onKeyDown={handleKeyDown}
