@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  core:
+    build:
+      context: ./src/todo_core
+      dockerfile: Dockerfile
+    expose:
+      - 8000
+    networks:
+      - todo
+  app:
+    build:
+      context: ./src/todo_app
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - core
+    networks:
+      - todo
+
+networks:
+  todo:
+    driver: bridge
