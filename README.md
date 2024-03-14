@@ -6,8 +6,8 @@
 * Use Dark Mode
 * Add Todo Task
 * List Todo Task
-* Check completed Todo Task [WIP]
-* Delete Todo Task [WIP]
+* Check completed Todo Task
+* Delete Todo Task
 
 ## Spec
 
