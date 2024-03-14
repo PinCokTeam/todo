@@ -1,6 +1,12 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
 
 const TodoContext = createContext<IToDoContext | undefined>(undefined);
 
@@ -17,16 +23,16 @@ export const TodoProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [todoList, setTodoList] = useState<IToDo[]>([]);
 
-  const refreshTodoList = () => {
+  const refreshTodoList = useCallback(() => {
     fetch("/api/todo")
       .then((res) => res.json())
       .then((data) => setTodoList(data))
       .catch((error) => console.error("Failed to fetch todos", error));
-  };
+  }, []);
 
   useEffect(() => {
     refreshTodoList();
-  }, []);
+  }, [refreshTodoList]);
 
   return (
     <TodoContext.Provider value={{ todoList, refreshTodoList }}>
