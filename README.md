@@ -7,5 +7,4 @@ frontend is NextJS, backend is django + DRF
 Use docker compose
 ```shell
 docker compose up -d
-`
-
+```
