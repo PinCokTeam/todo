@@ -1,8 +1,9 @@
-from django.urls import path
+from rest_framework.routers import DefaultRouter
 
-from to_do.views import ToDoListCreateAPI, ToDoDetailAPI
+from to_do.views import ToDoViewSet
 
-urlpatterns = [
-    path('', ToDoListCreateAPI.as_view()),
-    path('/<int:todo_id>', ToDoDetailAPI.as_view())
-]
+router = DefaultRouter(trailing_slash=False)
+
+router.register("", ToDoViewSet, basename='user')
+
+urlpatterns = router.urls
